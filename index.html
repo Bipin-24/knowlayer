@@ -17,6 +17,14 @@
 <meta property="og:title" content="Knowlayer — Make your content AI-ready" />
 <meta property="og:description" content="Wherever your content lives — any format or tool — we turn it into a clean, structured knowledge layer that AI systems can reliably retrieve." />
 <meta property="og:type" content="website" />
+<meta property="og:url" content="https://bipin-24.github.io/knowlayer/" />
+<meta property="og:image" content="https://bipin-24.github.io/knowlayer/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Knowlayer — Make your content AI-ready" />
+<meta name="twitter:description" content="Any source, any tool — turned into a clean, structured knowledge layer that AI can retrieve reliably." />
+<meta name="twitter:image" content="https://bipin-24.github.io/knowlayer/og-image.png" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -344,6 +352,61 @@
   .reveal.in { opacity: 1; transform: none; }
 
   /* ---------- RESPONSIVE ---------- */
+  /* ===== TRUST BAR ===== */
+  .trustbar { padding: 1.75rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
+  .trustbar-inner { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; justify-content: center; }
+  .trust-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate); }
+  .trust-logos { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .trust-logo { font-family: var(--display); font-weight: 600; font-size: 1.15rem; color: var(--navy); opacity: 0.75; letter-spacing: -0.01em; }
+
+  /* ===== DIFFERENTIATORS ===== */
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+  .why-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 1.6rem 1.5rem; }
+  .why-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(31,158,143,0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+  .why-icon svg { width: 22px; height: 22px; stroke: var(--teal); fill: none; stroke-width: 1.8; }
+  .why-card h3 { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin-bottom: 0.45rem; letter-spacing: -0.01em; }
+  .why-card p { font-size: 0.93rem; color: var(--slate); }
+
+  /* ===== FAQ ===== */
+  .faq { background: var(--paper); }
+  .faq-list { max-width: 780px; }
+  .faq-item { border-bottom: 1px solid var(--line); }
+  .faq-q {
+    width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+    padding: 1.3rem 0; display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    font-family: var(--display); font-weight: 500; font-size: 1.08rem; color: var(--ink);
+  }
+  .faq-q:hover { color: var(--navy); }
+  .faq-icon { flex-shrink: 0; width: 20px; height: 20px; position: relative; transition: transform 0.25s; }
+  .faq-icon::before, .faq-icon::after { content: ""; position: absolute; background: var(--teal); border-radius: 1px; }
+  .faq-icon::before { top: 9px; left: 0; width: 20px; height: 2px; }
+  .faq-icon::after { left: 9px; top: 0; width: 2px; height: 20px; transition: transform 0.25s; }
+  .faq-item.open .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+  .faq-a-inner { padding: 0 0 1.3rem; color: var(--slate); font-size: 0.96rem; line-height: 1.65; max-width: 68ch; }
+
+  /* ===== CONTACT FORM ===== */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; text-align: left; }
+  .contact-copy h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.8rem, 4vw, 2.6rem); color: #fff; letter-spacing: -0.015em; margin-bottom: 1rem; line-height: 1.1; }
+  .contact-copy p { color: #A7C6D6; font-size: 1.05rem; margin-bottom: 1.5rem; }
+  .contact-perks { list-style: none; display: grid; gap: 0.7rem; }
+  .contact-perks li { color: #C7D6E2; font-size: 0.95rem; padding-left: 1.6rem; position: relative; }
+  .contact-perks li::before { content: "\2713"; position: absolute; left: 0; color: var(--teal-bright); font-weight: 700; }
+  .cform { background: var(--surface); border-radius: 16px; padding: clamp(1.5rem, 3vw, 2rem); }
+  .cform label { display: block; font-size: 0.82rem; font-weight: 550; color: var(--ink); margin: 0 0 0.35rem; }
+  .cform input, .cform textarea, .cform select {
+    width: 100%; font-family: var(--body); font-size: 0.95rem; color: var(--ink);
+    padding: 0.7rem 0.85rem; border: 1px solid var(--line); border-radius: 9px;
+    background: var(--paper); margin-bottom: 1rem; transition: border-color 0.15s;
+  }
+  .cform input:focus, .cform textarea:focus, .cform select:focus { outline: none; border-color: var(--teal); }
+  .cform textarea { resize: vertical; min-height: 90px; }
+  .cform button { width: 100%; font-size: 0.98rem; padding: 0.85rem; border: none; cursor: pointer; }
+  .cform .form-note { font-size: 0.78rem; color: var(--slate); margin-top: 0.75rem; text-align: center; }
+  .cform .form-success { display: none; text-align: center; padding: 1rem 0; }
+  .cform .form-success.show { display: block; }
+  .cform .form-success .ok-ring { width: 48px; height: 48px; border-radius: 50%; background: rgba(31,158,143,0.12); color: var(--teal); display: flex; align-items: center; justify-content: center; margin: 0 auto 0.8rem; font-size: 1.4rem; }
+
   /* ===== TRANSFORMATION DEMO ===== */
   .demo { background: var(--surface); }
   .demo-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
@@ -443,6 +506,10 @@
     .nav-links .link { display: none; }
     .founder-grid { grid-template-columns: 1fr; text-align: left; }
     .founder-badge { margin-bottom: 0.5rem; }
+    .why-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .trustbar-inner { gap: 1rem; }
+    .trust-logos { gap: 1.25rem; justify-content: center; }
   }
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; }
@@ -510,6 +577,18 @@
     </div>
   </div>
 </header>
+
+<div class="trustbar">
+  <div class="wrap trustbar-inner">
+    <span class="trust-label">Built on 14 years across</span>
+    <div class="trust-logos">
+      <span class="trust-logo">Adobe</span>
+      <span class="trust-logo">ABB</span>
+      <span class="trust-logo">Aristocrat</span>
+      <span class="trust-logo">Actian</span>
+    </div>
+  </div>
+</div>
 
 <section class="problem" id="problem">
   <div class="wrap">
@@ -674,6 +753,35 @@
   </div>
 </section>
 
+<hr class="divider" />
+
+<section id="why">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why Knowlayer</span>
+      <h2>Built by the person doing the work.</h2>
+      <p>No account managers, no offshore handoffs, no black box. You work directly with someone who has spent 14 years inside enterprise content systems and builds the pipeline that migrates your content.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20" stroke-linecap="round"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h3>Format-agnostic pipeline</h3>
+        <p>One validated pipeline handles any source. You are not paying us to learn your format from scratch — we have already solved the hard parsing problems.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke-linecap="round"/></svg></div>
+        <h3>Validated, not just migrated</h3>
+        <p>Every engagement ends with measurable retrieval scores, not a promise. You get proof your content will actually perform in an AI system.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-14L4 7m8 4v10M4 7v10l8 4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>You own everything</h3>
+        <p>The migrated content, the pipeline, and the documentation are yours in your own Git repo. No lock-in, no proprietary platform you have to keep paying for.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="process" id="process">
   <div class="wrap">
     <div class="section-head reveal">
@@ -785,6 +893,43 @@
 
 <hr class="divider" />
 
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Questions</span>
+      <h2>What enterprises ask us.</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q">Who owns the migrated content and the pipeline?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">You do — completely. Everything we produce lives in your own Git repository: the structured content, the migration pipeline, and the documentation. There is no proprietary platform to stay locked into and no ongoing license required to use what we build.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How do you handle security and our NDA?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">We sign your NDA before any content changes hands and work within your access constraints. Content can be processed in an environment you control, and we retain nothing after handover unless you ask us to. Security specifics are agreed up front in the scope.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How long does a migration take?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">A typical migration and validation engagement runs six to eight weeks, depending on volume and source complexity. You approve a sample batch early, so you see the output quality before we scale to the full corpus. A readiness audit is faster — usually one to two weeks.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What if we are not sure what we need yet?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Start with the AI Readiness Audit. It inventories your content, scores its retrieval-readiness, and gives you a prioritized plan with a clear migration estimate. Many teams use the audit to build the internal business case before committing to a full migration.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Does this work with our specific AI stack?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. We deliver structured content and clean chunks that work with any vector store, RAG framework, or LLM — your existing stack or a new one. The knowledge layer is deliberately model-agnostic, so you are never tied to one AI vendor.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How is pricing structured?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Engagements are fixed-scope and priced to the outcome, not by the hour, so you know the cost up front. Pricing depends on volume, source complexity, and which tier fits. We walk through it transparently on the discovery call once we understand your content.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
 <section class="founder">
   <div class="wrap">
     <div class="founder-grid reveal">
@@ -805,10 +950,51 @@
 
 <section class="cta-band" id="contact">
   <div class="wrap">
-    <div class="reveal">
-      <h2>Ready to make your content AI-ready?</h2>
-      <p>Book a 30-minute discovery call. We'll look at your content, talk through the gaps, and tell you honestly whether an audit or a full migration makes sense.</p>
-      <a class="btn btn-primary" href="mailto:pandey.bipin2@gmail.com?subject=Knowlayer%20discovery%20call" style="font-size:1rem; padding:0.8rem 1.6rem;">Book a discovery call</a>
+    <div class="contact-grid">
+      <div class="contact-copy reveal">
+        <h2>Ready to make your content AI-ready?</h2>
+        <p>Book a 30-minute discovery call. We'll look at your content, talk through the gaps, and tell you honestly whether an audit or a full migration makes sense.</p>
+        <ul class="contact-perks">
+          <li>No obligation, no hard sell</li>
+          <li>An honest read on where your content stands</li>
+          <li>A clear recommended next step</li>
+        </ul>
+      </div>
+      <div class="cform reveal">
+        <!-- Replace FORM_ID with your Formspree form ID (formspree.io) or your own endpoint -->
+        <form id="contactForm" action="https://formspree.io/f/FORM_ID" method="POST">
+          <label for="cf-name">Name</label>
+          <input type="text" id="cf-name" name="name" required autocomplete="name" />
+
+          <label for="cf-email">Work email</label>
+          <input type="email" id="cf-email" name="email" required autocomplete="email" />
+
+          <label for="cf-company">Company</label>
+          <input type="text" id="cf-company" name="company" autocomplete="organization" />
+
+          <label for="cf-source">Where does your content live today?</label>
+          <select id="cf-source" name="content_source">
+            <option value="">Select one</option>
+            <option>Help center / knowledge base</option>
+            <option>Confluence / wiki</option>
+            <option>Legacy tool (FrameMaker, WebWorks, Flare)</option>
+            <option>PDF / Word</option>
+            <option>Markdown / structured docs</option>
+            <option>A mix of several</option>
+          </select>
+
+          <label for="cf-msg">Anything you'd like us to know? (optional)</label>
+          <textarea id="cf-msg" name="message" placeholder="Roughly how much content, and what you're hoping AI will do with it."></textarea>
+
+          <button type="submit" class="btn btn-primary">Book a discovery call</button>
+          <p class="form-note">Prefer email? <a href="mailto:pandey.bipin2@gmail.com?subject=Knowlayer%20discovery%20call" style="color:var(--navy); font-weight:550;">pandey.bipin2@gmail.com</a></p>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div class="ok-ring" aria-hidden="true">&#10003;</div>
+          <h4 style="font-family:var(--display); color:var(--ink); margin-bottom:0.3rem;">Thanks — message received.</h4>
+          <p style="color:var(--slate); font-size:0.92rem;">We'll be in touch within one business day to set up your call.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1087,6 +1273,60 @@ styles mapped to clean Markdown.</span>`,
       });
     }, { threshold: 0.5 });
     metricEls.forEach((el) => cio.observe(el));
+  }
+
+  /* ===== FAQ ACCORDION ===== */
+  document.querySelectorAll('.faq-q').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const ans = btn.nextElementSibling;
+      const isOpen = item.classList.contains('open');
+      // close others
+      document.querySelectorAll('.faq-item.open').forEach((o) => {
+        o.classList.remove('open');
+        o.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* ===== CONTACT FORM (Formspree AJAX, graceful fallback) ===== */
+  const cForm = document.getElementById('contactForm');
+  if (cForm) {
+    cForm.addEventListener('submit', async (e) => {
+      // If the form action still has the placeholder, let it fail loudly in console but not break UX
+      const action = cForm.getAttribute('action') || '';
+      if (action.includes('FORM_ID')) {
+        e.preventDefault();
+        alert('Set up your Formspree form ID in the form action to enable submissions. See README.');
+        return;
+      }
+      e.preventDefault();
+      const btn = cForm.querySelector('button[type=submit]');
+      const original = btn.textContent;
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+      try {
+        const res = await fetch(action, {
+          method: 'POST',
+          body: new FormData(cForm),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          cForm.style.display = 'none';
+          document.getElementById('formSuccess').classList.add('show');
+        } else {
+          throw new Error('submit failed');
+        }
+      } catch (err) {
+        btn.textContent = original;
+        btn.disabled = false;
+        alert('Something went wrong. Please email pandey.bipin2@gmail.com directly.');
+      }
+    });
   }
 </script>
 
