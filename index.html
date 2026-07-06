@@ -3,12 +3,19 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Knowlayer — Make your legacy documentation AI-ready</title>
-<meta name="description" content="Knowlayer makes enterprise legacy documentation AI-ready. We migrate, structure, and validate large documentation sets for reliable retrieval by LLMs, RAG pipelines, and AI assistants." />
+<title>Knowlayer — Make your content AI-ready</title>
+<meta name="description" content="Knowlayer makes enterprise content AI-ready. Whatever format or tool your knowledge lives in, we migrate, structure, and validate it for reliable retrieval by LLMs, RAG pipelines, and AI assistants." />
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="manifest" href="site.webmanifest" />
+<meta name="theme-color" content="#0E1B2A" />
 
 <!-- Open Graph -->
-<meta property="og:title" content="Knowlayer — Make your legacy documentation AI-ready" />
-<meta property="og:description" content="We turn large legacy documentation sets into a clean, structured knowledge layer that AI systems can reliably retrieve." />
+<meta property="og:title" content="Knowlayer — Make your content AI-ready" />
+<meta property="og:description" content="Wherever your content lives — any format or tool — we turn it into a clean, structured knowledge layer that AI systems can reliably retrieve." />
 <meta property="og:type" content="website" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -171,6 +178,14 @@
   .lv-legacy .tag { color: #C0553F; }
   .lv-legacy .messy { opacity: 0.55; }
 
+  /* multi-source input chips */
+  .lv-sources { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.1rem; }
+  .lv-src {
+    font-family: var(--mono); font-size: 0.66rem;
+    color: #8FA6B8; background: #17222E; border: 1px solid #2C4358;
+    border-radius: 6px; padding: 0.35rem 0.55rem;
+  }
+
   .lv-arrow {
     text-align: center; color: var(--teal-bright); font-size: 0.9rem;
     margin: 0.2rem 0 1.1rem; font-family: var(--mono); letter-spacing: 0.1em;
@@ -250,6 +265,21 @@
   .svc .svc-cta { margin-top: auto; font-family: var(--body); font-weight: 550; font-size: 0.9rem; color: var(--navy); display: inline-flex; align-items: center; gap: 0.4rem; transition: gap 0.18s; }
   .svc .svc-cta:hover { gap: 0.7rem; }
 
+  /* COVERAGE */
+  .coverage { background: var(--surface); }
+  .cov-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); }
+  .cov-label { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate); margin-bottom: 1rem; }
+  .cov-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .cov-chip {
+    font-family: var(--body); font-size: 0.88rem; font-weight: 450;
+    color: var(--navy); background: var(--paper);
+    border: 1px solid var(--line); border-radius: 8px;
+    padding: 0.45rem 0.85rem; transition: border-color 0.18s, transform 0.15s;
+  }
+  .cov-chip:hover { border-color: var(--teal); transform: translateY(-1px); }
+  .cov-chip.alt { background: rgba(31,158,143,0.07); border-color: rgba(31,158,143,0.28); color: var(--navy); }
+  .cov-note { font-size: 0.88rem; color: var(--slate); margin-top: 1.1rem; font-style: italic; }
+
   /* PROCESS */
   .process { background: var(--ink); color: #DCE7EF; }
   .process .eyebrow { color: var(--teal-bright); }
@@ -319,6 +349,7 @@
     .layerviz { order: 2; }
     .problem-grid { grid-template-columns: 1fr; text-align: left; }
     .svc-grid { grid-template-columns: 1fr; }
+    .cov-grid { grid-template-columns: 1fr; }
     .case-metrics { grid-template-columns: repeat(2, 1fr); }
     .nav-links .link { display: none; }
     .founder-grid { grid-template-columns: 1fr; text-align: left; }
@@ -341,6 +372,7 @@
     <div class="nav-links">
       <a class="link" href="#problem">The problem</a>
       <a class="link" href="#services">Services</a>
+      <a class="link" href="#coverage">Works with</a>
       <a class="link" href="#process">How it works</a>
       <a class="link" href="#case">Case study</a>
       <a class="btn btn-primary" href="#contact">Book a call</a>
@@ -352,9 +384,9 @@
 <header class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <span class="eyebrow">For enterprises with documentation debt</span>
-      <h1>Make your legacy documentation <em>AI-ready.</em></h1>
-      <p class="sub">We turn large, messy documentation sets into a clean, structured knowledge layer that LLMs, RAG pipelines, and AI assistants can retrieve reliably.</p>
+      <span class="eyebrow">For teams preparing content for AI</span>
+      <h1>Make your content <em>AI-ready.</em></h1>
+      <p class="sub">Wherever your content lives — help centers, wikis, PDFs, product docs, support articles, any format or tool — we turn it into a clean, structured knowledge layer that LLMs, RAG pipelines, and AI assistants can retrieve reliably.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="#contact">Book a discovery call</a>
         <a class="btn btn-ghost" href="#case">See the case study</a>
@@ -362,17 +394,21 @@
     </div>
 
     <div class="layerviz" aria-hidden="true">
-      <div class="lv-label">Raw legacy content</div>
-      <div class="lv-block lv-legacy">
-        <span class="tag">&lt;div class="wwhelp"&gt;</span><br>
-        <span class="messy">&nbsp;&nbsp;nested tables, inline styles,</span><br>
-        <span class="messy">&nbsp;&nbsp;no metadata, broken anchors…</span><br>
-        <span class="tag">&lt;/div&gt;</span>
+      <div class="lv-label">Any source, any tool</div>
+      <div class="lv-sources">
+        <span class="lv-src">Help center</span>
+        <span class="lv-src">PDF</span>
+        <span class="lv-src">DITA / XML</span>
+        <span class="lv-src">Confluence</span>
+        <span class="lv-src">Word</span>
+        <span class="lv-src">HTML</span>
+        <span class="lv-src">Markdown</span>
+        <span class="lv-src">Wiki</span>
       </div>
 
       <div class="lv-arrow">↓ &nbsp;structure + validate&nbsp; ↓</div>
 
-      <div class="lv-label">The knowledge layer</div>
+      <div class="lv-label">One knowledge layer</div>
       <div class="lv-layer">
         <div class="lv-chunk settle" data-delay="0"><span class="k">title:</span> Install Guide<br><span class="k">tags:</span> [setup]</div>
         <div class="lv-chunk settle" data-delay="120"><span class="k">chunk:</span> 512 tok<br><span class="k">score:</span> 0.94</div>
@@ -397,7 +433,7 @@
       <div class="pain-list reveal">
         <div class="pain">
           <span class="pi">01</span>
-          <div><h4>Wrong format</h4><p>Content lives in FrameMaker, WebWorks, Confluence, or PDF exports that retrieval pipelines can't cleanly ingest.</p></div>
+          <div><h4>Scattered across formats and tools</h4><p>Your knowledge is spread across help centers, wikis, PDFs, product docs, DITA, Word, and legacy publishing tools. No retrieval pipeline can cleanly ingest that mix as-is.</p></div>
         </div>
         <div class="pain">
           <span class="pi">02</span>
@@ -419,15 +455,15 @@
     <div class="section-head reveal">
       <span class="eyebrow">What we do</span>
       <h2>Three ways to work with us.</h2>
-      <p>Start with an audit to see where you stand, or go straight to a full migration. Every engagement ends with content your AI systems can actually use.</p>
+      <p>Whatever your content is in today, we make it AI-ready. Start with an audit to see where you stand, or go straight to a full migration. Built for enterprises, scale-ups, product teams, and support orgs — any team whose knowledge needs to work with AI.</p>
     </div>
     <div class="svc-grid">
       <div class="svc reveal">
         <div class="svc-tier">Starter</div>
         <h3>AI Readiness Audit</h3>
-        <p class="desc">Know exactly where your documentation stands before committing to migration.</p>
+        <p class="desc">Know exactly where your content stands — in any format — before committing to a migration.</p>
         <ul>
-          <li>Content inventory and structure analysis</li>
+          <li>Inventory across all your sources and tools</li>
           <li>RAG-readiness score per section</li>
           <li>Gap report and priority matrix</li>
           <li>Migration estimate and scope</li>
@@ -437,9 +473,9 @@
       <div class="svc feature reveal">
         <div class="svc-tier">Most common</div>
         <h3>Migration + Validation</h3>
-        <p class="desc">Your legacy content, converted to structured Markdown and validated for retrieval.</p>
+        <p class="desc">Any source format, converted to a structured, retrieval-ready knowledge layer.</p>
         <ul>
-          <li>Full format migration with custom parser</li>
+          <li>Migration from any format or tool</li>
           <li>Metadata, frontmatter, and clean chunking</li>
           <li>Embedding-based deduplication</li>
           <li>RAG validation report and Git delivery</li>
@@ -457,6 +493,54 @@
           <li>Team handover and ongoing support</li>
         </ul>
         <a class="svc-cta" href="#contact">Plan a build →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="coverage" id="coverage">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Works with your stack</span>
+      <h2>Any source in. One knowledge layer out.</h2>
+      <p>We're format-agnostic by design. If your content can be exported or accessed, we can make it AI-ready — and deliver it into whatever pipeline or assistant you run.</p>
+    </div>
+    <div class="cov-grid">
+      <div class="cov-col reveal">
+        <div class="cov-label">Sources we work with</div>
+        <div class="cov-chips">
+          <span class="cov-chip">Help centers &amp; KBs</span>
+          <span class="cov-chip">Zendesk</span>
+          <span class="cov-chip">Confluence</span>
+          <span class="cov-chip">SharePoint</span>
+          <span class="cov-chip">Notion</span>
+          <span class="cov-chip">FrameMaker</span>
+          <span class="cov-chip">MadCap Flare</span>
+          <span class="cov-chip">RoboHelp</span>
+          <span class="cov-chip">WebWorks</span>
+          <span class="cov-chip">DITA / XML</span>
+          <span class="cov-chip">Word / DOCX</span>
+          <span class="cov-chip">PDF</span>
+          <span class="cov-chip">HTML</span>
+          <span class="cov-chip">Google Docs</span>
+          <span class="cov-chip">Markdown</span>
+          <span class="cov-chip">Wikis</span>
+        </div>
+      </div>
+      <div class="cov-col reveal">
+        <div class="cov-label">Targets we deliver into</div>
+        <div class="cov-chips">
+          <span class="cov-chip alt">Structured Markdown</span>
+          <span class="cov-chip alt">Clean chunks + metadata</span>
+          <span class="cov-chip alt">Any vector store</span>
+          <span class="cov-chip alt">Your RAG pipeline</span>
+          <span class="cov-chip alt">Any LLM or assistant</span>
+          <span class="cov-chip alt">MkDocs</span>
+          <span class="cov-chip alt">Docusaurus</span>
+          <span class="cov-chip alt">Zensical</span>
+          <span class="cov-chip alt">Git repo</span>
+        </div>
+        <p class="cov-note">Don't see your format or tool? If it holds content, we can handle it. Ask on a call.</p>
       </div>
     </div>
   </div>
@@ -502,7 +586,7 @@
         <span class="case-tag">Retrieval validation</span>
         <span class="case-tag">docs-as-code delivery</span>
       </div>
-      <p class="case-note">Details anonymized. Full walkthrough available under NDA on a discovery call.</p>
+      <p class="case-note">Details anonymized. The same pipeline applies whether your content lives in a legacy publishing tool, a help center, a wiki, or a mix of all three. Full walkthrough available under NDA on a discovery call.</p>
     </div>
   </div>
 </section>
