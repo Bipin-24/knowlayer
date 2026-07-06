@@ -344,6 +344,95 @@
   .reveal.in { opacity: 1; transform: none; }
 
   /* ---------- RESPONSIVE ---------- */
+  /* ===== TRANSFORMATION DEMO ===== */
+  .demo { background: var(--surface); }
+  .demo-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .demo-tab {
+    font-family: var(--mono); font-size: 0.8rem; font-weight: 500;
+    padding: 0.55rem 1rem; border-radius: 8px; cursor: pointer;
+    background: var(--paper); border: 1px solid var(--line); color: var(--slate);
+    transition: all 0.16s;
+  }
+  .demo-tab:hover { border-color: var(--slate); color: var(--ink); }
+  .demo-tab.active { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .demo-stage { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: stretch; }
+  .demo-panel {
+    background: var(--ink); border-radius: 12px; padding: 1.1rem 1.2rem;
+    font-family: var(--mono); font-size: 0.74rem; line-height: 1.6;
+    overflow: hidden; min-height: 280px; position: relative;
+  }
+  .demo-panel .panel-label {
+    font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+    margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem;
+  }
+  .demo-panel .panel-label::after { content: ""; flex: 1; height: 1px; background: var(--line-dark); }
+  .panel-before .panel-label { color: #C0553F; }
+  .panel-after .panel-label { color: var(--teal-bright); }
+  .demo-code { white-space: pre-wrap; word-break: break-word; color: #7A8FA1; }
+  .demo-code .tag { color: #C0553F; }
+  .demo-code .muted { opacity: 0.5; }
+  .demo-after-code .yk { color: var(--teal-bright); }
+  .demo-after-code .yv { color: #A7C6D6; }
+  .demo-after-code .h { color: #fff; font-weight: 500; }
+  .demo-after-code .txt { color: #8FA6B8; }
+  .demo-chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.9rem; }
+  .demo-chip { font-size: 0.62rem; color: var(--teal-bright); background: rgba(45,212,191,0.1); border: 1px solid rgba(45,212,191,0.3); border-radius: 5px; padding: 0.25rem 0.5rem; }
+  .demo-arrow {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0.5rem; color: var(--teal); font-family: var(--mono); font-size: 0.7rem;
+  }
+  .demo-arrow .arr { font-size: 1.4rem; }
+  .demo-after-code { opacity: 0; transform: translateY(8px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .demo-after-code.shown { opacity: 1; transform: none; }
+  .demo-note { font-size: 0.85rem; color: var(--slate); margin-top: 1.2rem; font-style: italic; }
+
+  /* ===== READINESS SCORER ===== */
+  .scorer { background: var(--ink); color: #DCE7EF; }
+  .scorer .eyebrow { color: var(--teal-bright); }
+  .scorer .section-head h2 { color: #fff; }
+  .scorer .section-head p { color: #8CA3B4; }
+  .scorer-card {
+    background: #17222E; border: 1px solid var(--line-dark); border-radius: 16px;
+    padding: clamp(1.5rem, 4vw, 2.5rem); max-width: 760px;
+  }
+  .quiz-q { margin-bottom: 1.5rem; }
+  .quiz-q:last-of-type { margin-bottom: 0; }
+  .quiz-q .q-label { font-family: var(--body); font-size: 0.95rem; color: #C7D6E2; margin-bottom: 0.7rem; font-weight: 500; }
+  .quiz-q .q-num { font-family: var(--mono); font-size: 0.75rem; color: var(--teal-bright); margin-right: 0.5rem; }
+  .q-opts { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .q-opt {
+    font-family: var(--body); font-size: 0.85rem; cursor: pointer;
+    padding: 0.5rem 0.9rem; border-radius: 8px;
+    background: #0E1B2A; border: 1px solid var(--line-dark); color: #9DB2C2;
+    transition: all 0.15s;
+  }
+  .q-opt:hover { border-color: var(--teal); color: #fff; }
+  .q-opt.sel { background: var(--teal); border-color: var(--teal); color: #04211D; font-weight: 500; }
+  .scorer-result {
+    margin-top: 1.8rem; padding-top: 1.8rem; border-top: 1px solid var(--line-dark);
+    display: none;
+  }
+  .scorer-result.show { display: block; }
+  .score-ring-wrap { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  .score-ring { position: relative; width: 108px; height: 108px; flex-shrink: 0; }
+  .score-ring svg { transform: rotate(-90deg); }
+  .score-ring .score-num {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-family: var(--display); font-weight: 700; font-size: 1.9rem; color: #fff;
+  }
+  .score-verdict { flex: 1; min-width: 240px; }
+  .score-verdict h4 { font-family: var(--display); font-weight: 600; font-size: 1.2rem; color: #fff; margin-bottom: 0.3rem; }
+  .score-verdict p { color: #93A9BA; font-size: 0.92rem; margin-bottom: 1rem; }
+  .score-cta { display: inline-block; }
+
+  /* ===== ANIMATED COUNTERS ===== already styled via .metric ===== */
+
+  @media (max-width: 860px) {
+    .demo-stage { grid-template-columns: 1fr; }
+    .demo-arrow { flex-direction: row; padding: 0.3rem 0; }
+    .demo-arrow .arr { transform: rotate(90deg); }
+  }
+
   @media (max-width: 860px) {
     .hero-grid { grid-template-columns: 1fr; }
     .layerviz { order: 2; }
@@ -371,9 +460,9 @@
     </a>
     <div class="nav-links">
       <a class="link" href="#problem">The problem</a>
+      <a class="link" href="#demo">See it work</a>
       <a class="link" href="#services">Services</a>
-      <a class="link" href="#coverage">Works with</a>
-      <a class="link" href="#process">How it works</a>
+      <a class="link" href="#scorer">Readiness score</a>
       <a class="link" href="#case">Case study</a>
       <a class="btn btn-primary" href="#contact">Book a call</a>
     </div>
@@ -444,6 +533,45 @@
           <div><h4>No way to measure readiness</h4><p>Teams can't tell which content is AI-ready and which will quietly degrade the quality of every answer.</p></div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section class="demo" id="demo">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">See it in action</span>
+      <h2>Messy content in. Clean knowledge layer out.</h2>
+      <p>Pick a source format to see the same transformation we run at scale — raw, unstructured content becoming retrieval-ready structured output with metadata and clean chunks.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="demo-tabs" role="tablist">
+        <button class="demo-tab active" data-demo="confluence" role="tab">Confluence page</button>
+        <button class="demo-tab" data-demo="html" role="tab">Legacy HTML help</button>
+        <button class="demo-tab" data-demo="pdf" role="tab">PDF export</button>
+        <button class="demo-tab" data-demo="word" role="tab">Word document</button>
+      </div>
+
+      <div class="demo-stage">
+        <div class="demo-panel panel-before">
+          <div class="panel-label">Before — raw source</div>
+          <div class="demo-code" id="demoBefore"></div>
+        </div>
+
+        <div class="demo-arrow">
+          <span class="arr" aria-hidden="true">→</span>
+          <button class="btn btn-primary" id="demoRun" style="font-size:0.8rem; padding:0.5rem 0.9rem;">Transform</button>
+        </div>
+
+        <div class="demo-panel panel-after">
+          <div class="panel-label">After — AI-ready</div>
+          <div class="demo-code demo-after-code" id="demoAfter"></div>
+        </div>
+      </div>
+      <p class="demo-note">Illustrative examples. Real migrations run thousands of topics through the same validated pipeline.</p>
     </div>
   </div>
 </section>
@@ -563,6 +691,70 @@
   </div>
 </section>
 
+<section class="scorer" id="scorer">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Free · 30 seconds</span>
+      <h2>How AI-ready is your content?</h2>
+      <p>Answer four quick questions for an instant readiness score and a recommendation on where to start.</p>
+    </div>
+
+    <div class="scorer-card reveal">
+      <div class="quiz-q" data-q="format">
+        <div class="q-label"><span class="q-num">01</span>What format is most of your content in today?</div>
+        <div class="q-opts">
+          <button class="q-opt" data-v="30">Legacy tools (FrameMaker, WebWorks, PDF)</button>
+          <button class="q-opt" data-v="55">Help center / wiki / Confluence</button>
+          <button class="q-opt" data-v="75">HTML or Word</button>
+          <button class="q-opt" data-v="95">Markdown or structured docs</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-q="metadata">
+        <div class="q-label"><span class="q-num">02</span>Does your content have consistent metadata and tags?</div>
+        <div class="q-opts">
+          <button class="q-opt" data-v="20">None at all</button>
+          <button class="q-opt" data-v="55">Some, but inconsistent</button>
+          <button class="q-opt" data-v="90">Yes, structured and consistent</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-q="structure">
+        <div class="q-label"><span class="q-num">03</span>Is your content broken into clean, self-contained sections?</div>
+        <div class="q-opts">
+          <button class="q-opt" data-v="25">Long pages, no clear structure</button>
+          <button class="q-opt" data-v="60">Mostly, with some long pages</button>
+          <button class="q-opt" data-v="90">Yes, modular and consistent</button>
+        </div>
+      </div>
+      <div class="quiz-q" data-q="scale">
+        <div class="q-label"><span class="q-num">04</span>Roughly how large is your content set?</div>
+        <div class="q-opts">
+          <button class="q-opt" data-v="90">Under 200 pages</button>
+          <button class="q-opt" data-v="65">200–1,000 pages</button>
+          <button class="q-opt" data-v="45">1,000–5,000 pages</button>
+          <button class="q-opt" data-v="30">5,000+ pages</button>
+        </div>
+      </div>
+
+      <div class="scorer-result" id="scorerResult">
+        <div class="score-ring-wrap">
+          <div class="score-ring">
+            <svg width="108" height="108" viewBox="0 0 108 108">
+              <circle cx="54" cy="54" r="46" fill="none" stroke="#24405C" stroke-width="10"/>
+              <circle id="scoreArc" cx="54" cy="54" r="46" fill="none" stroke="#2DD4BF" stroke-width="10" stroke-linecap="round" stroke-dasharray="289" stroke-dashoffset="289" style="transition: stroke-dashoffset 0.9s ease;"/>
+            </svg>
+            <div class="score-num" id="scoreNum">0</div>
+          </div>
+          <div class="score-verdict">
+            <h4 id="scoreTitle">Your readiness score</h4>
+            <p id="scoreText">Answer all four to see your result.</p>
+            <a class="btn btn-primary score-cta" href="#contact">Book a discovery call</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="case">
   <div class="wrap">
     <div class="section-head reveal">
@@ -614,7 +806,7 @@
 <section class="cta-band" id="contact">
   <div class="wrap">
     <div class="reveal">
-      <h2>Ready to make your docs AI-ready?</h2>
+      <h2>Ready to make your content AI-ready?</h2>
       <p>Book a 30-minute discovery call. We'll look at your content, talk through the gaps, and tell you honestly whether an audit or a full migration makes sense.</p>
       <a class="btn btn-primary" href="mailto:pandey.bipin2@gmail.com?subject=Knowlayer%20discovery%20call" style="font-size:1rem; padding:0.8rem 1.6rem;">Book a discovery call</a>
     </div>
@@ -659,6 +851,243 @@
       setTimeout(() => { el.style.transition = 'opacity .5s ease, transform .5s ease'; el.style.opacity = '1'; el.style.transform = 'none'; }, 400 + d);
     });
   });
+
+  /* ===== TRANSFORMATION DEMO ===== */
+  const demoData = {
+    confluence: {
+      before: `<span class="tag">&lt;div class="wiki-content"&gt;</span>
+  <span class="muted">&lt;h1&gt;Setting Up SSO&lt;/h1&gt;</span>
+  <span class="muted">&lt;p&gt;&lt;span style="color:#333"&gt;To configure</span>
+  <span class="muted">single sign-on, first go to the admin</span>
+  <span class="muted">panel and&amp;nbsp;then click...&lt;/span&gt;&lt;/p&gt;</span>
+  <span class="muted">&lt;table&gt;&lt;tr&gt;&lt;td&gt;Step&lt;/td&gt;...&lt;/table&gt;</span>
+  <span class="muted">&lt;ac:structured-macro ac:name="info"&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="muted">— inline styles, macros, no metadata,</span>
+<span class="muted">  answer buried mid-paragraph</span>`,
+      after: `<span class="yk">---</span>
+<span class="yk">title:</span> <span class="yv">Setting Up SSO</span>
+<span class="yk">tags:</span> <span class="yv">[auth, sso, admin]</span>
+<span class="yk">summary:</span> <span class="yv">Configure single sign-on</span>
+<span class="yk">chunk_id:</span> <span class="yv">auth-sso-001</span>
+<span class="yk">---</span>
+
+<span class="h"># Setting Up SSO</span>
+
+<span class="txt">Configure single sign-on from the admin
+panel in three steps. Start here:</span>
+
+<span class="h">## 1. Open the admin panel</span>
+<span class="txt">Navigate to Settings → Security → SSO.</span>`,
+      chips: ['clean chunk: 312 tok', 'metadata: complete', 'retrieval score: 0.93']
+    },
+    html: {
+      before: `<span class="tag">&lt;div class="wwhelp-topic"&gt;</span>
+  <span class="muted">&lt;font face="Arial" size="2"&gt;</span>
+  <span class="muted">&lt;b&gt;API Authentication&lt;/b&gt;&lt;br&gt;&lt;br&gt;</span>
+  <span class="muted">Use your token in the header.</span>
+  <span class="muted">&lt;table border="1" cellpadding="3"&gt;</span>
+  <span class="muted">&lt;tr&gt;&lt;td&gt;&amp;nbsp;Header&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;</span>
+  <span class="muted">&lt;/font&gt;&lt;a name="anchor_4821"&gt;&lt;/a&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="muted">— font tags, broken anchors, tables</span>
+<span class="muted">  used for layout, no structure</span>`,
+      after: `<span class="yk">---</span>
+<span class="yk">title:</span> <span class="yv">API Authentication</span>
+<span class="yk">tags:</span> <span class="yv">[api, rest, auth]</span>
+<span class="yk">summary:</span> <span class="yv">Authenticate API requests</span>
+<span class="yk">chunk_id:</span> <span class="yv">api-auth-001</span>
+<span class="yk">---</span>
+
+<span class="h"># API Authentication</span>
+
+<span class="txt">Authenticate every request by passing
+your token in the Authorization header.</span>
+
+<span class="h">## Required headers</span>
+<span class="txt">| Header | Value |
+| Authorization | Bearer &lt;token&gt; |</span>`,
+      chips: ['clean chunk: 268 tok', 'metadata: complete', 'retrieval score: 0.95']
+    },
+    pdf: {
+      before: `<span class="muted">Installation Guide v4.2  ....  page 12</span>
+<span class="muted">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+<span class="muted">3.1  System  Require-</span>
+<span class="muted">ments   The  minimum   supported</span>
+<span class="muted">config-  uration  is  8GB  RAM  and</span>
+<span class="muted">4  cores.  See  Fig. 3  below.</span>
+<span class="muted">[image]     footer: © 2021 Acme</span>
+
+<span class="muted">— hard line-breaks, hyphenation,</span>
+<span class="muted">  headers/footers, lost hierarchy</span>`,
+      after: `<span class="yk">---</span>
+<span class="yk">title:</span> <span class="yv">System Requirements</span>
+<span class="yk">tags:</span> <span class="yv">[install, setup]</span>
+<span class="yk">source_page:</span> <span class="yv">12</span>
+<span class="yk">chunk_id:</span> <span class="yv">install-req-001</span>
+<span class="yk">---</span>
+
+<span class="h">## System Requirements</span>
+
+<span class="txt">The minimum supported configuration
+is 8 GB RAM and 4 cores.</span>
+
+<span class="txt">Hyphenation repaired, headers and
+footers stripped, hierarchy restored.</span>`,
+      chips: ['clean chunk: 194 tok', 'metadata: complete', 'retrieval score: 0.91']
+    },
+    word: {
+      before: `<span class="muted">[Heading 1] Onboarding New Users</span>
+<span class="muted">[Normal] Welcome!  Please  read  this</span>
+<span class="muted">[Normal] carefully.   {track-change}</span>
+<span class="muted">[List Bullet] Create account</span>
+<span class="muted">[Normal]   {comment: fix this later}</span>
+<span class="muted">[Table] embedded 4x3 grid...</span>
+
+<span class="muted">— style names, tracked changes,</span>
+<span class="muted">  stray comments, mixed formatting</span>`,
+      after: `<span class="yk">---</span>
+<span class="yk">title:</span> <span class="yv">Onboarding New Users</span>
+<span class="yk">tags:</span> <span class="yv">[onboarding, users]</span>
+<span class="yk">summary:</span> <span class="yv">First-time user setup</span>
+<span class="yk">chunk_id:</span> <span class="yv">onboard-001</span>
+<span class="yk">---</span>
+
+<span class="h"># Onboarding New Users</span>
+
+<span class="txt">Welcome. Follow these steps to get
+started:</span>
+
+<span class="h">## Create your account</span>
+<span class="txt">Tracked changes and comments removed;
+styles mapped to clean Markdown.</span>`,
+      chips: ['clean chunk: 231 tok', 'metadata: complete', 'retrieval score: 0.94']
+    }
+  };
+
+  const beforeEl = document.getElementById('demoBefore');
+  const afterEl = document.getElementById('demoAfter');
+  const runBtn = document.getElementById('demoRun');
+  let currentDemo = 'confluence';
+  let transformed = false;
+
+  function renderBefore(key) {
+    beforeEl.innerHTML = demoData[key].before;
+  }
+  function renderAfter(key) {
+    const d = demoData[key];
+    const chips = d.chips.map((c) => `<span class="demo-chip">${c}</span>`).join('');
+    afterEl.innerHTML = d.after + `<div class="demo-chip-row">${chips}</div>`;
+  }
+  function resetAfter() {
+    afterEl.classList.remove('shown');
+    transformed = false;
+    runBtn.textContent = 'Transform';
+  }
+  function doTransform() {
+    renderAfter(currentDemo);
+    requestAnimationFrame(() => afterEl.classList.add('shown'));
+    transformed = true;
+    runBtn.textContent = 'Transformed ✓';
+  }
+
+  if (beforeEl) {
+    renderBefore(currentDemo);
+    document.querySelectorAll('.demo-tab').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.demo-tab').forEach((t) => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentDemo = tab.getAttribute('data-demo');
+        renderBefore(currentDemo);
+        resetAfter();
+      });
+    });
+    runBtn.addEventListener('click', () => { if (!transformed) doTransform(); });
+  }
+
+  /* ===== READINESS SCORER ===== */
+  const answers = {};
+  const totalQs = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach((q) => {
+    const key = q.getAttribute('data-q');
+    q.querySelectorAll('.q-opt').forEach((opt) => {
+      opt.addEventListener('click', () => {
+        q.querySelectorAll('.q-opt').forEach((o) => o.classList.remove('sel'));
+        opt.classList.add('sel');
+        answers[key] = parseInt(opt.getAttribute('data-v'), 10);
+        maybeScore();
+      });
+    });
+  });
+
+  function maybeScore() {
+    if (Object.keys(answers).length < totalQs) return;
+    const vals = Object.values(answers);
+    const score = Math.round(vals.reduce((a, b) => a + b, 0) / vals.length);
+    const result = document.getElementById('scorerResult');
+    result.classList.add('show');
+
+    // animate ring
+    const arc = document.getElementById('scoreArc');
+    const circ = 289;
+    arc.style.strokeDashoffset = circ - (circ * score / 100);
+    let color = score >= 75 ? '#2DD4BF' : score >= 50 ? '#E0A458' : '#C0553F';
+    arc.style.stroke = color;
+
+    // count up number
+    const numEl = document.getElementById('scoreNum');
+    let cur = 0;
+    const step = Math.max(1, Math.round(score / 30));
+    const tick = setInterval(() => {
+      cur += step; if (cur >= score) { cur = score; clearInterval(tick); }
+      numEl.textContent = cur;
+    }, 24);
+
+    // verdict
+    let title, text;
+    if (score >= 75) {
+      title = 'Strong foundation';
+      text = 'Your content is close to AI-ready. A focused audit would pinpoint the last gaps and validate retrieval quality before you plug in an assistant.';
+    } else if (score >= 50) {
+      title = 'Partway there';
+      text = 'You have real structure to build on, but inconsistency will hurt retrieval. A migration and validation pass would get you to reliable, AI-ready content.';
+    } else {
+      title = 'Significant gap';
+      text = 'Your content will struggle to power reliable AI today. That is exactly the situation we specialize in — a full knowledge-layer build turns this around.';
+    }
+    document.getElementById('scoreTitle').textContent = title;
+    document.getElementById('scoreText').textContent = text;
+  }
+
+  /* ===== ANIMATED COUNTERS (metrics) ===== */
+  const metricEls = document.querySelectorAll('.metric .m-val');
+  if ('IntersectionObserver' in window && metricEls.length) {
+    const cio = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        cio.unobserve(el);
+        const raw = el.textContent.trim();
+        const m = raw.match(/^([\d,]+)(.*)$/);
+        if (!m) return;
+        const target = parseInt(m[1].replace(/,/g, ''), 10);
+        const suffix = m[2];
+        if (isNaN(target)) return;
+        let cur = 0;
+        const dur = 900, start = performance.now();
+        function frame(now) {
+          const p = Math.min(1, (now - start) / dur);
+          cur = Math.round(target * (1 - Math.pow(1 - p, 3)));
+          el.textContent = cur.toLocaleString() + suffix;
+          if (p < 1) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      });
+    }, { threshold: 0.5 });
+    metricEls.forEach((el) => cio.observe(el));
+  }
 </script>
 
 </body>
