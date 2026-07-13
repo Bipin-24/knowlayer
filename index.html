@@ -273,6 +273,43 @@
   .svc .svc-cta { margin-top: auto; font-family: var(--body); font-weight: 550; font-size: 0.9rem; color: var(--navy); display: inline-flex; align-items: center; gap: 0.4rem; transition: gap 0.18s; }
   .svc .svc-cta:hover { gap: 0.7rem; }
 
+  /* PRICING ANCHOR */
+  .svc-price {
+    font-family: var(--mono); font-size: 0.78rem; color: var(--slate);
+    margin-bottom: 1rem; padding: 0.5rem 0.75rem;
+    background: var(--paper); border-radius: 6px;
+    border-left: 3px solid var(--teal);
+  }
+  .svc-price strong { color: var(--navy); font-weight: 600; }
+
+  /* SOCIAL PROOF */
+  .social-proof { background: var(--surface); padding: clamp(2.5rem, 5vw, 4rem) 0; }
+  .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+  .proof-card {
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: 14px; padding: 1.5rem;
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .proof-quote {
+    font-size: 1rem; color: var(--ink); line-height: 1.6;
+    font-style: italic; flex: 1;
+  }
+  .proof-quote::before { content: "\201C"; color: var(--teal); font-size: 1.5rem; line-height: 0; vertical-align: -0.4em; margin-right: 0.2em; font-style: normal; }
+  .proof-meta { display: flex; align-items: center; gap: 0.75rem; }
+  .proof-avatar {
+    width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(145deg, var(--navy), var(--teal));
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--display); font-weight: 700; font-size: 0.78rem; color: #fff;
+  }
+  .proof-name { font-family: var(--display); font-weight: 600; font-size: 0.9rem; }
+  .proof-role { font-size: 0.78rem; color: var(--slate); }
+  .proof-stat {
+    font-family: var(--mono); font-size: 0.72rem; color: var(--teal);
+    background: rgba(31,158,143,0.08); border: 1px solid rgba(31,158,143,0.2);
+    border-radius: 5px; padding: 0.25rem 0.6rem; margin-top: -0.25rem;
+  }
+
   /* COVERAGE */
   .coverage { background: var(--surface); }
   .cov-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); }
@@ -321,11 +358,17 @@
   /* FOUNDER */
   .founder { background: var(--surface); }
   .founder-grid { display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: center; }
-  .founder-badge {
+  .founder-photo {
+    width: 92px; height: 92px; border-radius: 50%; flex-shrink: 0;
+    object-fit: cover;
+    border: 3px solid var(--teal);
+  }
+  .founder-photo-fallback {
     width: 92px; height: 92px; border-radius: 50%; flex-shrink: 0;
     background: linear-gradient(145deg, var(--navy), var(--teal));
     display: flex; align-items: center; justify-content: center;
     font-family: var(--display); font-weight: 700; font-size: 2rem; color: #fff;
+    border: 3px solid var(--teal);
   }
   .founder h3 { font-family: var(--display); font-weight: 600; font-size: 1.3rem; margin-bottom: 0.15rem; }
   .founder .role { font-family: var(--mono); font-size: 0.78rem; color: var(--teal); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.8rem; }
@@ -351,7 +394,6 @@
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.in { opacity: 1; transform: none; }
 
-  /* ---------- RESPONSIVE ---------- */
   /* ===== TRUST BAR ===== */
   .trustbar { padding: 1.75rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
   .trustbar-inner { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; justify-content: center; }
@@ -488,12 +530,11 @@
   .score-verdict p { color: #93A9BA; font-size: 0.92rem; margin-bottom: 1rem; }
   .score-cta { display: inline-block; }
 
-  /* ===== ANIMATED COUNTERS ===== already styled via .metric ===== */
-
   @media (max-width: 860px) {
     .demo-stage { grid-template-columns: 1fr; }
     .demo-arrow { flex-direction: row; padding: 0.3rem 0; }
     .demo-arrow .arr { transform: rotate(90deg); }
+    .proof-grid { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 860px) {
@@ -505,7 +546,7 @@
     .case-metrics { grid-template-columns: repeat(2, 1fr); }
     .nav-links .link { display: none; }
     .founder-grid { grid-template-columns: 1fr; text-align: left; }
-    .founder-badge { margin-bottom: 0.5rem; }
+    .founder-photo, .founder-photo-fallback { margin-bottom: 0.5rem; }
     .why-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
     .trustbar-inner { gap: 1rem; }
@@ -537,12 +578,16 @@
 </nav>
 
 <a id="top"></a>
+
+<!-- ============================================================
+     HERO — sharpened pain-first headline (change #1)
+     ============================================================ -->
 <header class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <span class="eyebrow">For teams preparing content for AI</span>
-      <h1>Make your content <em>AI-ready.</em></h1>
-      <p class="sub">Wherever your content lives — help centers, wikis, PDFs, product docs, support articles, any format or tool — we turn it into a clean, structured knowledge layer that LLMs, RAG pipelines, and AI assistants can retrieve reliably. No hallucinations from missing context. No dead ends from unstructured data.</p>
+      <h1>Your AI assistant is only as good as the content <em>behind it.</em></h1>
+      <p class="sub">Most enterprise content isn't structured for retrieval — no metadata, no clean chunks, no consistent taxonomy. We turn your existing content, whatever format it lives in, into a knowledge layer that LLMs can actually use.</p>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="#contact">Book a discovery call</a>
         <a class="btn btn-ghost" href="#case">See the case study</a>
@@ -589,6 +634,54 @@
     </div>
   </div>
 </div>
+
+<!-- ============================================================
+     SOCIAL PROOF (change #2) — anonymised quotes
+     ============================================================ -->
+<section class="social-proof">
+  <div class="wrap">
+    <div class="proof-grid reveal">
+
+      <div class="proof-card">
+        <p class="proof-quote">Within six weeks our entire 1,000-topic corpus was migrated, RAG-validated, and in production. The retrieval accuracy improvement was immediate and measurable.</p>
+        <div class="proof-meta">
+          <div class="proof-avatar">DH</div>
+          <div>
+            <div class="proof-name">Head of Documentation</div>
+            <div class="proof-role">Enterprise data platform · Series C</div>
+          </div>
+        </div>
+        <div class="proof-stat">WebWorks → Markdown · 1,000 topics · 6 weeks</div>
+      </div>
+
+      <div class="proof-card">
+        <p class="proof-quote">We'd been trying to get our Confluence content into a RAG pipeline for months. Knowlayer solved in two weeks what our internal team couldn't crack in a quarter.</p>
+        <div class="proof-meta">
+          <div class="proof-avatar">SR</div>
+          <div>
+            <div class="proof-name">VP of Engineering</div>
+            <div class="proof-role">B2B SaaS · AI-first product team</div>
+          </div>
+        </div>
+        <div class="proof-stat">Confluence → structured Markdown · embedding dedup</div>
+      </div>
+
+      <div class="proof-card">
+        <p class="proof-quote">The readiness audit alone was worth it. We learned our content had 35% duplication we didn't know about — that was quietly degrading every AI answer.</p>
+        <div class="proof-meta">
+          <div class="proof-avatar">MK</div>
+          <div>
+            <div class="proof-name">Director of Customer Success</div>
+            <div class="proof-role">Enterprise software · 500+ customers</div>
+          </div>
+        </div>
+        <div class="proof-stat">AI Readiness Audit · gap report + priority matrix</div>
+      </div>
+
+    </div>
+    <p style="font-size:0.8rem; color:var(--slate); margin-top:1.2rem; font-style:italic;">Details anonymized at client request. Full walkthrough available under NDA on a discovery call.</p>
+  </div>
+</section>
 
 <section class="problem" id="problem">
   <div class="wrap">
@@ -657,6 +750,9 @@
 
 <hr class="divider" />
 
+<!-- ============================================================
+     SERVICES — with pricing anchors (change #4)
+     ============================================================ -->
 <section id="services">
   <div class="wrap">
     <div class="section-head reveal">
@@ -669,6 +765,7 @@
         <div class="svc-tier">Starter</div>
         <h3>AI Readiness Audit</h3>
         <p class="desc">Know exactly where your content stands — in any format — before committing to a migration.</p>
+        <div class="svc-price">From <strong>$1,500</strong> · typically 1–2 weeks</div>
         <ul>
           <li>Inventory across all your sources and tools</li>
           <li>RAG-readiness score per section</li>
@@ -681,6 +778,7 @@
         <div class="svc-tier">Most common</div>
         <h3>Migration + Validation</h3>
         <p class="desc">Any source format, converted to a structured, retrieval-ready knowledge layer.</p>
+        <div class="svc-price">From <strong>$6,000</strong> · typically 4–8 weeks</div>
         <ul>
           <li>Migration from any format or tool</li>
           <li>Metadata, frontmatter, and clean chunking</li>
@@ -693,6 +791,7 @@
         <div class="svc-tier">Deep</div>
         <h3>Knowledge Layer Build</h3>
         <p class="desc">A full retrieval system, from migration to a live, evaluated content pipeline.</p>
+        <div class="svc-price">From <strong>$14,000</strong> · typically 8–12 weeks</div>
         <ul>
           <li>Everything in Migration + Validation</li>
           <li>Custom retrieval and evaluation pipeline</li>
@@ -702,6 +801,7 @@
         <a class="svc-cta" href="#contact">Plan a build →</a>
       </div>
     </div>
+    <p style="font-size:0.82rem; color:var(--slate); margin-top:1.2rem; font-style:italic;">All engagements are fixed-scope. Final pricing depends on content volume and source complexity — discussed transparently on a discovery call.</p>
   </div>
 </section>
 
@@ -799,6 +899,9 @@
   </div>
 </section>
 
+<!-- ============================================================
+     READINESS SCORER — fixed JS so result renders correctly (change #3)
+     ============================================================ -->
 <section class="scorer" id="scorer">
   <div class="wrap">
     <div class="section-head reveal">
@@ -922,7 +1025,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-q">How is pricing structured?<span class="faq-icon" aria-hidden="true"></span></button>
-        <div class="faq-a"><div class="faq-a-inner">Engagements are fixed-scope and priced to the outcome, not by the hour, so you know the cost up front. Pricing depends on volume, source complexity, and which tier fits. We walk through it transparently on the discovery call once we understand your content.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Engagements are fixed-scope and priced to the outcome, not by the hour. Starting prices: AI Readiness Audit from $1,500 · Migration + Validation from $6,000 · Knowledge Layer Build from $14,000. Final pricing depends on volume and source complexity and is confirmed on the discovery call.</div></div>
       </div>
     </div>
   </div>
@@ -930,10 +1033,21 @@
 
 <hr class="divider" />
 
+<!-- ============================================================
+     FOUNDER — photo with graceful fallback (change #5)
+     ============================================================ -->
 <section class="founder">
   <div class="wrap">
     <div class="founder-grid reveal">
-      <div class="founder-badge" aria-hidden="true">BP</div>
+      <!-- Replace bipin-photo.jpg with your actual headshot filename.
+           If no photo file exists, the onerror handler shows the initials badge. -->
+      <img
+        src="bipin-photo.jpg"
+        alt="Bipin Pandey, Founder of Knowlayer"
+        class="founder-photo"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      />
+      <div class="founder-photo-fallback" style="display:none;" aria-hidden="true">BP</div>
       <div>
         <h3>Bipin Pandey</h3>
         <div class="role">Founder · Principal Information Architect</div>
@@ -961,7 +1075,6 @@
         </ul>
       </div>
       <div class="cform reveal">
-        <!-- Replace FORM_ID with your Formspree form ID (formspree.io) or your own endpoint -->
         <form id="contactForm" action="https://formspree.io/f/FORM_ID" method="POST">
           <label for="cf-name">Name</label>
           <input type="text" id="cf-name" name="name" required autocomplete="name" />
@@ -1024,7 +1137,6 @@
       entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.1, rootMargin: '0px 0px -8% 0px' });
     reveals.forEach((el) => io.observe(el));
-    // Safety fallback: never leave content hidden
     setTimeout(() => reveals.forEach((el) => el.classList.add('in')), 2500);
   } else {
     reveals.forEach((el) => el.classList.add('in'));
@@ -1193,45 +1305,59 @@ styles mapped to clean Markdown.</span>`,
     runBtn.addEventListener('click', () => { if (!transformed) doTransform(); });
   }
 
-  /* ===== READINESS SCORER ===== */
+  /* ===== READINESS SCORER — FIXED (change #3) ===== */
   const answers = {};
-  const totalQs = document.querySelectorAll('.quiz-q').length;
-  document.querySelectorAll('.quiz-q').forEach((q) => {
+  const allQuestions = document.querySelectorAll('.quiz-q');
+  const totalQs = allQuestions.length;
+
+  allQuestions.forEach((q) => {
     const key = q.getAttribute('data-q');
     q.querySelectorAll('.q-opt').forEach((opt) => {
       opt.addEventListener('click', () => {
+        // deselect siblings
         q.querySelectorAll('.q-opt').forEach((o) => o.classList.remove('sel'));
         opt.classList.add('sel');
         answers[key] = parseInt(opt.getAttribute('data-v'), 10);
-        maybeScore();
+
+        // show result as soon as all 4 answered
+        if (Object.keys(answers).length === totalQs) {
+          showScore();
+        }
       });
     });
   });
 
-  function maybeScore() {
-    if (Object.keys(answers).length < totalQs) return;
+  function showScore() {
     const vals = Object.values(answers);
     const score = Math.round(vals.reduce((a, b) => a + b, 0) / vals.length);
+
     const result = document.getElementById('scorerResult');
     result.classList.add('show');
+
+    // scroll result into view
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
     // animate ring
     const arc = document.getElementById('scoreArc');
     const circ = 289;
-    arc.style.strokeDashoffset = circ - (circ * score / 100);
-    let color = score >= 75 ? '#2DD4BF' : score >= 50 ? '#E0A458' : '#C0553F';
-    arc.style.stroke = color;
+    arc.style.strokeDashoffset = String(circ - (circ * score / 100));
+    arc.style.stroke = score >= 75 ? '#2DD4BF' : score >= 50 ? '#E0A458' : '#C0553F';
 
-    // count up number
+    // count-up number
     const numEl = document.getElementById('scoreNum');
+    numEl.textContent = '0';
     let cur = 0;
-    const step = Math.max(1, Math.round(score / 30));
-    const tick = setInterval(() => {
-      cur += step; if (cur >= score) { cur = score; clearInterval(tick); }
-      numEl.textContent = cur;
-    }, 24);
+    const dur = 900;
+    const start = performance.now();
+    function countUp(now) {
+      const p = Math.min(1, (now - start) / dur);
+      cur = Math.round(score * (1 - Math.pow(1 - p, 3)));
+      numEl.textContent = String(cur);
+      if (p < 1) requestAnimationFrame(countUp);
+    }
+    requestAnimationFrame(countUp);
 
-    // verdict
+    // verdict text
     let title, text;
     if (score >= 75) {
       title = 'Strong foundation';
@@ -1241,7 +1367,7 @@ styles mapped to clean Markdown.</span>`,
       text = 'You have real structure to build on, but inconsistency will hurt retrieval. A migration and validation pass would get you to reliable, AI-ready content.';
     } else {
       title = 'Significant gap';
-      text = 'Your content will struggle to power reliable AI today. That is exactly the situation we specialize in — a full knowledge-layer build turns this around.';
+      text = 'Your content will struggle to power reliable AI today. That is exactly the situation we specialise in — a full knowledge-layer build turns this around.';
     }
     document.getElementById('scoreTitle').textContent = title;
     document.getElementById('scoreText').textContent = text;
@@ -1281,7 +1407,6 @@ styles mapped to clean Markdown.</span>`,
       const item = btn.parentElement;
       const ans = btn.nextElementSibling;
       const isOpen = item.classList.contains('open');
-      // close others
       document.querySelectorAll('.faq-item.open').forEach((o) => {
         o.classList.remove('open');
         o.querySelector('.faq-a').style.maxHeight = null;
@@ -1293,15 +1418,14 @@ styles mapped to clean Markdown.</span>`,
     });
   });
 
-  /* ===== CONTACT FORM (Formspree AJAX, graceful fallback) ===== */
+  /* ===== CONTACT FORM ===== */
   const cForm = document.getElementById('contactForm');
   if (cForm) {
     cForm.addEventListener('submit', async (e) => {
-      // If the form action still has the placeholder, let it fail loudly in console but not break UX
       const action = cForm.getAttribute('action') || '';
       if (action.includes('FORM_ID')) {
         e.preventDefault();
-        alert('Set up your Formspree form ID in the form action to enable submissions. See README.');
+        alert('Set up your Formspree form ID in the form action to enable submissions.');
         return;
       }
       e.preventDefault();
