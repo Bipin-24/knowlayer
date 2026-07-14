@@ -1,8 +1,8 @@
-name: Deploy to GitHub Pages
+name: Deploy Knowlayer (marketing + docs)
 
 on:
   push:
-    branches: ["main"]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -15,16 +15,41 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+
+      - uses: actions/setup-python@v5
         with:
-          path: "."
+          python-version: "3.12"
+
+      - name: Install MkDocs Material
+        run: pip install -r requirements.txt
+
+      - name: Build docs site into site/docs
+        run: mkdocs build --site-dir site/docs
+
+      - name: Copy marketing page + assets into site root
+        run: |
+          # Copy everything at repo root EXCEPT build/config dirs into site/
+          rsync -a --exclude 'site' --exclude 'docs' --exclude '.git' \
+                   --exclude '.github' --exclude 'mkdocs.yml' \
+                   --exclude 'requirements.txt' \
+                   --exclude 'VS_CODE_CLAUDE_GUIDE.md' \
+                   --exclude 'README.md' ./ site/
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - id: deployment
         uses: actions/deploy-pages@v4
