@@ -1,0 +1,137 @@
+/* ============================================================
+   KNOWLAYER DOCS — custom design layer over Material
+   Palette and type mirror the marketing site so the two
+   halves read as one brand. Signature motif: chunk boundaries.
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+:root {
+  --kl-ink:         #0E1B2A;
+  --kl-navy:        #16324F;
+  --kl-teal:        #1F9E8F;
+  --kl-teal-bright: #2DD4BF;
+  --kl-paper:       #F7F9FB;
+  --kl-slate:       #5A6B7B;
+  --kl-line:        #DCE4EC;
+
+  /* Material custom palette hooks */
+  --md-primary-fg-color:        #16324F;
+  --md-primary-fg-color--light: #1F9E8F;
+  --md-primary-fg-color--dark:  #0E1B2A;
+  --md-accent-fg-color:         #1F9E8F;
+
+  --md-text-font: "Inter";
+  --md-code-font: "JetBrains Mono";
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:        #0E1B2A;
+  --md-accent-fg-color:         #2DD4BF;
+  --md-default-bg-color:        #0E1B2A;
+  --kl-paper:                   #17222E;
+}
+
+/* ---------- Header: brand ink, not default blue ---------- */
+.md-header, .md-tabs { background: var(--kl-ink); }
+
+/* ---------- Display type for headings ---------- */
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  font-family: "Space Grotesk", var(--md-text-font), sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+.md-typeset h1 { font-weight: 700; }
+
+/* ---------- Links / accents ---------- */
+.md-typeset a { color: var(--kl-teal); }
+.md-typeset a:hover { color: var(--kl-teal-bright); }
+
+/* ============================================================
+   HERO — docs landing page thesis
+   ============================================================ */
+.kl-hero {
+  margin: 0 0 2.5rem;
+  padding: 2.4rem 2rem 2.2rem;
+  border-radius: 16px;
+  background:
+    radial-gradient(120% 90% at 85% 0%, rgba(45,212,191,0.14), transparent 55%),
+    linear-gradient(160deg, #0E1B2A, #16324F);
+  color: #DCE7EF;
+  position: relative;
+  overflow: hidden;
+}
+.kl-hero .eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--kl-teal-bright); margin-bottom: 0.8rem;
+}
+.kl-hero h1 {
+  font-family: "Space Grotesk", sans-serif;
+  color: #fff !important; font-size: 2.05rem; line-height: 1.08;
+  letter-spacing: -0.025em; margin: 0 0 0.7rem; border: 0;
+}
+.kl-hero h1 em { font-style: normal; color: var(--kl-teal-bright); }
+.kl-hero p { color: #A7C6D6; font-size: 1.02rem; max-width: 56ch; margin: 0; }
+
+/* ---------- Signature: chunk-boundary strip ---------- */
+.kl-chunks {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem; margin-top: 1.6rem;
+}
+.kl-chunk {
+  font-family: "JetBrains Mono", monospace; font-size: 0.62rem;
+  color: #A7C6D6; background: rgba(255,255,255,0.03);
+  border: 1px solid #24405C; border-left: 2px solid var(--kl-teal);
+  border-radius: 7px; padding: 0.55rem 0.6rem; line-height: 1.5;
+}
+.kl-chunk .k { color: var(--kl-teal-bright); }
+@media (max-width: 700px){ .kl-chunks { grid-template-columns: repeat(2,1fr); } }
+
+/* ============================================================
+   GRID CARDS (Material .grid.cards, restyled)
+   ============================================================ */
+.md-typeset .grid.cards > ul > li {
+  border: 1px solid var(--kl-line); border-radius: 14px;
+  padding: 1.2rem 1.3rem; transition: transform .18s, box-shadow .18s, border-color .18s;
+}
+.md-typeset .grid.cards > ul > li:hover {
+  transform: translateY(-4px); border-color: var(--kl-teal);
+  box-shadow: 0 18px 40px -26px rgba(14,27,42,.4);
+}
+
+/* ============================================================
+   Chunk-boundary callout used inside articles
+   ============================================================ */
+.kl-boundary {
+  font-family: "JetBrains Mono", monospace; font-size: 0.8rem;
+  border: 1px dashed var(--kl-teal); border-radius: 8px;
+  padding: 0.5rem 0.8rem; margin: 1rem 0; color: var(--kl-navy);
+  background: rgba(31,158,143,0.05);
+  position: relative;
+}
+.kl-boundary::before {
+  content: "chunk boundary"; position: absolute; top: -0.6rem; left: 0.8rem;
+  background: var(--kl-paper); padding: 0 0.4rem;
+  font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--kl-teal);
+}
+
+/* ---------- Tables a touch tighter ---------- */
+.md-typeset table:not([class]) th {
+  background: var(--kl-navy); color: #fff; font-family: "Space Grotesk", sans-serif;
+}
+
+/* ---------- Code block corners ---------- */
+.md-typeset pre > code { border-radius: 10px; }
+
+/* ---------- Footer back-link prominence ---------- */
+.md-footer-meta { background: var(--kl-ink); }
+
+/* ---------- Disable elastic/rubber-band overscroll bounce ---------- */
+html,
+body {
+  overscroll-behavior: none;
+}
