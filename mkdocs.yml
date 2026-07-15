@@ -71,6 +71,7 @@ nav:
   - Home: index.md
   - AI-Readiness KPIs: ai-readiness.md
   - Chunking Deep-Dive: chunking.md
+  - Knowledge Graphs: knowledge-graphs.md
 
 extra:
   social:
