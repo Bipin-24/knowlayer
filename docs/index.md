@@ -37,6 +37,14 @@ Field notes on making content AI-ready: chunking, retrieval, metadata, and the K
 
     [:octicons-arrow-right-24: Read the deep-dive](chunking.md)
 
+-   :material-graph-outline:{ .lg .middle } __From Taxonomy to Knowledge Graph__
+
+    ---
+
+    Every IA already builds knowledge graphs implicitly. Making them explicit — triples, prerequisites, and GraphRAG — is what lets an AI system reason over your content, not just retrieve it.
+
+    [:octicons-arrow-right-24: Read the path to graphs](knowledge-graphs.md)
+
 </div>
 
 ## What this is
