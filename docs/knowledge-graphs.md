@@ -115,4 +115,3 @@ The teams that make that move own the layer everyone else's AI depends on.
     A runnable version of this — built on real documentation topics — is on GitHub at [Bipin-24/knowledge-graphs-for-ia](https://github.com/Bipin-24/knowledge-graphs-for-ia), including the learning-path traversal and the flat-RAG-versus-GraphRAG comparison shown above. It uses portable Python, so it runs with one `pip install` and no database.
 
 *[RAG]: Retrieval-Augmented Generation
-*[IA]: Information Architecture
