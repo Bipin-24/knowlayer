@@ -98,7 +98,12 @@ def semantic_chunks(sentences, threshold=0.75):
     return chunks
 ```
 
-1.  Adjacent-sentence cosine similarity is a cheap proxy for "are these about the same thing."
+1.  Adjacent-sentence cosine similarity is a cheap proxy for "are these about the same thing":
+
+    \[
+    \text{sim}(u, v) = \frac{u \cdot v}{\lVert u \rVert \, \lVert v \rVert}
+    \]
+
 2.  Below threshold means the topic drifted — a natural boundary.
 
 **Use when:** prose runs long without reliable headings (whitepapers, articles). **Cost:** an extra embedding pass at ingest time.
@@ -111,10 +116,21 @@ Newer approaches embed the *whole* document first (or prepend an LLM-generated c
 
 ## Token math you should keep in your head
 
-- **Embedding model window.** Most embedding models cap around 512–8192 tokens. A chunk larger than the window is silently truncated — the tail never gets embedded.
+- **Embedding model window.** Most embedding models cap around 512–8192 tokens. A chunk larger than the window is ==silently truncated== — the tail never gets embedded.
 - **Rule of thumb.** ~4 characters ≈ 1 token in English; ~750 words ≈ 1000 tokens.
 - **Practical target.** For docs, 200–500 tokens per chunk balances context against precision. Below ~100 you lose context; above ~800 you dilute the embedding.
 - **Overlap.** 10–20% overlap on fixed/recursive splits; heading-anchored splitting usually needs little or none because boundaries already fall at coherent points.
+
+Quick glossary, for anyone new to the terms above:
+
+Chunk
+:   A single retrievable unit of content — the piece an embedding model turns into a vector and a retriever can return on its own.
+
+Overlap
+:   Tokens repeated between adjacent chunks so a sentence that lands on a boundary isn't orphaned in only one of them.
+
+Context window
+:   The maximum number of tokens a model (embedding or generation) can accept in a single pass; content beyond it is truncated, not summarized.
 
 ## Context enrichment: the cheapest win
 
@@ -165,6 +181,17 @@ Chunking is testable. Build a small set of real questions with known correct sou
 - **Boundary integrity** — are procedures and tables intact, not severed?
 
 If recall is low, your boundaries or enrichment are wrong — not your model.
+
+Before you sign off a chunking pass as done, run it against this checklist:
+
+- [x] Benchmark question set built from real support/search queries
+- [x] Every chunk carries its heading path and source metadata
+- [ ] Recall measured against the benchmark, not eyeballed
+- [ ] Oversized and undersized chunks flagged and re-split
+- [ ] Re-run after any change to the splitter or embedding model
+
+!!! tip "Jump to a strategy"
+    Most readers land here to check one strategy. Press ++ctrl+f++ (++cmd+f++ on Mac) and search for the strategy name.
 
 ## The takeaway
 

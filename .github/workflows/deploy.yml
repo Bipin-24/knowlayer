@@ -24,17 +24,17 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install MkDocs Material
+      - name: Install Zensical
         run: pip install -r requirements.txt
 
       - name: Build docs site into site/docs
-        run: mkdocs build --site-dir site/docs
+        run: zensical build --clean --strict
 
       - name: Copy marketing page + assets into site root
         run: |
           # Copy everything at repo root EXCEPT build/config dirs into site/
           rsync -a --exclude 'site' --exclude 'docs' --exclude '.git' \
-                   --exclude '.github' --exclude 'mkdocs.yml' \
+                   --exclude '.github' --exclude 'zensical.toml' \
                    --exclude 'requirements.txt' \
                    --exclude 'VS_CODE_CLAUDE_GUIDE.md' \
                    --exclude 'README.md' ./ site/

@@ -34,6 +34,15 @@ From a real documentation set, that looks like:
 
 That's it. Three triples and you already know more about "API Authentication" than a flat metadata row could ever hold: what you must read first, what concept it teaches, and which product owns it. This triple model is what sits underneath both RDF (the W3C semantic-web standard) and property-graph databases like Neo4j. The vocabulary is shared even when the tools differ.
 
+Drawn as a graph instead of a list, the same three triples look like this:
+
+```mermaid
+graph LR
+  A[API Authentication] -->|REQUIRES| B[Installation Guide]
+  A -->|COVERS| C[authentication]
+  A -->|BELONGS_TO| D[Data Platform]
+```
+
 ## What a graph answers that a taxonomy cannot
 
 Here is the practical payoff. These are questions a hierarchy and a metadata table struggle with, and a graph answers by simply following edges.

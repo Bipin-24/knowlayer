@@ -26,14 +26,31 @@
 }
 
 [data-md-color-scheme="slate"] {
-  --md-primary-fg-color:        #0E1B2A;
+  /* Drives --md-typeset-a-color, which colors the active sidebar nav
+     item — must stay visibly lighter than --md-default-bg-color below,
+     or the selected item's text disappears against its own background. */
+  --md-primary-fg-color:        #1F9E8F;
   --md-accent-fg-color:         #2DD4BF;
   --md-default-bg-color:        #0E1B2A;
   --kl-paper:                   #17222E;
 }
 
-/* ---------- Header: brand ink, not default blue ---------- */
-.md-header, .md-tabs { background: var(--kl-ink); }
+/* ---------- Header: white, not brand ink ---------- */
+.md-header, .md-tabs {
+  background: #ffffff;
+  color: var(--kl-ink);
+  box-shadow: 0 1px 0 var(--kl-line);
+}
+.md-header__button,
+.md-header__topic,
+.md-header__title,
+.md-header__ellipsis { color: var(--kl-ink); }
+.md-search__input {
+  background: var(--kl-paper);
+  color: var(--kl-ink);
+}
+.md-search__input::placeholder { color: var(--kl-slate); }
+.md-search__icon svg { fill: var(--kl-slate); }
 
 /* ---------- Display type for headings ---------- */
 .md-typeset h1,
@@ -127,8 +144,22 @@
 /* ---------- Code block corners ---------- */
 .md-typeset pre > code { border-radius: 10px; }
 
-/* ---------- Footer back-link prominence ---------- */
-.md-footer-meta { background: var(--kl-ink); }
+/* ---------- Footer: white, not brand ink ---------- */
+.md-footer,
+.md-footer-meta {
+  background: #ffffff;
+}
+.md-footer-meta {
+  color: var(--kl-slate);
+  border-top: 1px solid var(--kl-line);
+}
+.md-footer-meta .md-footer-copyright,
+.md-footer-meta a { color: var(--kl-slate); }
+.md-footer__inner,
+.md-footer__link,
+.md-footer__title,
+.md-footer__direction { color: var(--kl-ink); }
+.md-footer__link svg { fill: var(--kl-ink); }
 
 /* ---------- Disable elastic/rubber-band overscroll bounce ---------- */
 html,
