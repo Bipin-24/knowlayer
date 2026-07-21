@@ -42,7 +42,13 @@ Even your **style guide** now has a second audience. You are no longer writing o
 
 ## Where to start
 
-Measure AI-readiness coverage: what percentage of your corpus is structured, tagged, and chunked well enough to retrieve reliably. That single number is the new north star.
+Measure AI-readiness coverage: what percentage of your corpus is structured, tagged, and chunked well enough to retrieve reliably. That single number is the new north star:
+
+\[
+\text{AI-readiness coverage} = \frac{\text{chunks that are structured, tagged, and correctly split}}{\text{total chunks in corpus}} \times 100\%
+\]
+
+A corpus sitting at \(40\%\) coverage means six in ten chunks are still liabilities — either unstructured, untagged, or split badly enough that retrieval will surface them out of context.
 
 ---
 

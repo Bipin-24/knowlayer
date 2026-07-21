@@ -45,12 +45,31 @@
 .md-header__topic,
 .md-header__title,
 .md-header__ellipsis { color: var(--kl-ink); }
-.md-search__input {
-  background: var(--kl-paper);
+/* Classic variant renders search as a button (mask-icon + "Ctrl+K" hint),
+   not a text input — style it to read on the white header instead of the
+   theme default (26% black idle / white-on-white on hover, invisible here). */
+.md-search__button {
+  background-color: var(--kl-paper);
+  color: var(--kl-slate);
+  border-radius: 999px;
+}
+.md-search__button:before {
+  background-color: var(--kl-slate);
+}
+.md-search__button:after {
+  background: var(--kl-line);
+  color: var(--kl-slate);
+  border-radius: 999px;
+}
+.md-search__button:hover,
+.md-search__button:focus {
+  background-color: var(--kl-line);
   color: var(--kl-ink);
 }
-.md-search__input::placeholder { color: var(--kl-slate); }
-.md-search__icon svg { fill: var(--kl-slate); }
+.md-search__button:hover:before,
+.md-search__button:focus:before {
+  background-color: var(--kl-ink);
+}
 
 /* ---------- Display type for headings ---------- */
 .md-typeset h1,
